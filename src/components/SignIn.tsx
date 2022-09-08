@@ -66,6 +66,12 @@ const SignIn = () => {
 				</button>
 			</form>
 			<p className="text-sm font-light text-gray-500">
+				Sign in using{' '}
+				<a href="#" className="font-medium text-primary-600 hover:underline">
+					one time password
+				</a>
+			</p>
+			<p className="text-sm font-light text-gray-500 !mt-2">
 				Don’t have an account yet?{' '}
 				<a href="#" className="font-medium text-primary-600 hover:underline">
 					Sign up
