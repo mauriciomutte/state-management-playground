@@ -1,9 +1,19 @@
-const SignIn = () => {
+import Link from '@/components/Link';
+import type { AuthStates } from '@/pages';
+
+type SignInProps = {
+	onStateChange: (state: AuthStates) => void;
+};
+
+const SignIn = ({ onStateChange }: SignInProps) => {
+	const handleChange = (state: AuthStates) => onStateChange(state);
+
 	return (
 		<>
 			<h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
 				Sign in to your account
 			</h1>
+
 			<form className="space-y-4 md:space-y-6" action="#">
 				<div>
 					<label
@@ -51,12 +61,9 @@ const SignIn = () => {
 							</label>
 						</div>
 					</div>
-					<a
-						href="#"
-						className="text-sm font-medium text-primary-600 hover:underline"
-					>
+					<Link onClick={() => handleChange('resetPassword')}>
 						Forgot password?
-					</a>
+					</Link>
 				</div>
 				<button
 					type="submit"
@@ -65,17 +72,16 @@ const SignIn = () => {
 					Sign in
 				</button>
 			</form>
+
 			<p className="text-sm font-light text-gray-500">
 				Sign in using{' '}
-				<a href="#" className="font-medium text-primary-600 hover:underline">
+				<Link onClick={() => handleChange('oneTimePassword')}>
 					one time password
-				</a>
+				</Link>
 			</p>
 			<p className="text-sm font-light text-gray-500 !mt-2">
 				Don’t have an account yet?{' '}
-				<a href="#" className="font-medium text-primary-600 hover:underline">
-					Sign up
-				</a>
+				<Link onClick={() => handleChange('signUp')}>Sign up</Link>
 			</p>
 		</>
 	);
