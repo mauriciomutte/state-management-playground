@@ -1,5 +1,5 @@
 import Link from '@/components/Link';
-import type { AuthStates } from '@/pages';
+import type { AuthStates } from '@/pages/index.page';
 
 type SignUpProps = {
 	onStateChange: (state: AuthStates) => void;

@@ -1,6 +1,6 @@
 import { ReactElement, useMemo, useState } from 'react';
 
-import { NextPageWithLayout } from '@/pages/_app';
+import { NextPageWithLayout } from '@/pages/_app.page';
 import Layout from '@/components/Layout';
 import SignIn from '@/components/SignIn';
 import SignUp from '@/components/SignUp';
