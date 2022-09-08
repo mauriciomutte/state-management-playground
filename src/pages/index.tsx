@@ -1,4 +1,4 @@
-import { ReactElement, useState } from 'react';
+import { ReactElement, useMemo, useState } from 'react';
 
 import { NextPageWithLayout } from '@/pages/_app';
 import Layout from '@/components/Layout';
@@ -16,19 +16,26 @@ type StateComponentsType = {
 
 export type AuthStates = keyof StateComponentsType;
 
-const Home: NextPageWithLayout = () => {
-	const [currentState, setCurrentState] = useState<AuthStates>('login');
-
-	const componentByState: StateComponentsType = {
+const getComponentToRender = (state: AuthStates) => {
+	const componentToRender: StateComponentsType = {
 		login: SignIn,
 		signUp: SignUp,
 		oneTimePassword: OneTimePassword,
 		resetPassword: ResetPassword,
 	};
 
+	return componentToRender[state];
+};
+
+const Home: NextPageWithLayout = () => {
+	const [currentState, setCurrentState] = useState<AuthStates>('login');
+
 	const handleChangeState = (state: AuthStates) => setCurrentState(state);
 
-	const ComponentToRender = componentByState[currentState];
+	const ComponentToRender = useMemo(
+		() => getComponentToRender(currentState),
+		[currentState]
+	);
 
 	return <ComponentToRender onStateChange={handleChangeState} />;
 };
