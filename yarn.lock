@@ -3568,6 +3568,7 @@ __metadata:
     react-dom: 18.2.0
     tailwindcss: ^3.1.8
     typescript: 4.7.4
+    xstate: ^4.33.6
   languageName: unknown
   linkType: soft
 
@@ -5211,6 +5212,13 @@ __metadata:
   version: 1.0.2
   resolution: "wrappy@npm:1.0.2"
   checksum: 159da4805f7e84a3d003d8841557196034155008f817172d4e986bd591f74aa82aa7db55929a54222309e01079a65a92a9e6414da5a6aa4b01ee44a511ac3ee5
+  languageName: node
+  linkType: hard
+
+"xstate@npm:^4.33.6":
+  version: 4.33.6
+  resolution: "xstate@npm:4.33.6"
+  checksum: 19fc3038ce116e4e0bf36ee7ba7a198b7fae7fad323d8c6966610cbb0c7414f41d3d2d5768e281edf25b8afa903d9bfb55ab053f627ddd83cf042879c2158ec5
   languageName: node
   linkType: hard
 
