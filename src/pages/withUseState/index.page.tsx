@@ -1,11 +1,11 @@
 import { ReactElement, useMemo, useState } from 'react';
+import Head from 'next/head';
 
 import { NextPageWithLayout } from '@/pages/_app.page';
 import Layout from '@/components/Layout';
 import { AuthStates, getComponentToRender } from '@/utils/getComponentToRender';
-import Head from 'next/head';
 
-const Home: NextPageWithLayout = () => {
+const LoginSimpleState: NextPageWithLayout = () => {
 	const [currentState, setCurrentState] = useState<AuthStates>('login');
 
 	const handleChangeState = (state: AuthStates) => setCurrentState(state);
@@ -25,8 +25,8 @@ const Home: NextPageWithLayout = () => {
 	);
 };
 
-Home.getLayout = function getLayout(page: ReactElement) {
+LoginSimpleState.getLayout = function getLayout(page: ReactElement) {
 	return <Layout>{page}</Layout>;
 };
 
-export default Home;
+export default LoginSimpleState;
