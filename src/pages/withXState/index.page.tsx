@@ -1,21 +1,17 @@
 import { ReactElement, useMemo } from 'react';
 import { useMachine } from '@xstate/react';
+import Head from 'next/head';
 
 import { NextPageWithLayout } from '@/pages/_app.page';
 import Layout from '@/components/Layout';
 import { authMachine } from '@/pages/withXState/machine';
 import { AuthStates, getComponentToRender } from '@/utils/getComponentToRender';
-import Head from 'next/head';
 
-const getMachineEvents = (event: AuthStates) => {
-	const events = {
-		login: 'SIGN_IN',
-		signUp: 'SIGN_UP',
-		oneTimePassword: 'ONE_TIME_PASSWORD',
-		resetPassword: 'RESET_PASSWORD',
-	};
-
-	return events[event];
+const eventsByState = {
+	login: 'SIGN_IN',
+	signUp: 'SIGN_UP',
+	oneTimePassword: 'ONE_TIME_PASSWORD',
+	resetPassword: 'RESET_PASSWORD',
 };
 
 const LoginXState: NextPageWithLayout = () => {
@@ -24,7 +20,7 @@ const LoginXState: NextPageWithLayout = () => {
 	const currentState = machineState.value as AuthStates;
 
 	const handleChangeState = (state: AuthStates) => {
-		const eventType = getMachineEvents(state);
+		const eventType = eventsByState[state];
 
 		send({ type: eventType });
 	};
