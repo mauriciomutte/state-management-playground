@@ -1,14 +1,10 @@
 import { ReactElement, useMemo } from 'react';
+import { useMachine } from '@xstate/react';
 
 import { NextPageWithLayout } from '@/pages/_app.page';
 import Layout from '@/components/Layout';
-import SignIn from '@/components/SignIn';
-import SignUp from '@/components/SignUp';
-import OneTimePassword from '@/components/OneTimePassword';
-import ResetPassword from '@/components/ResetPassword';
-import { AuthStates } from '@/pages/index.page';
 import { authMachine } from '@/pages/withXState/machine';
-import { useMachine } from '@xstate/react';
+import { AuthStates, getComponentToRender } from '@/utils/getComponentToRender';
 
 const getMachineEvents = (event: AuthStates) => {
 	const events = {
@@ -19,17 +15,6 @@ const getMachineEvents = (event: AuthStates) => {
 	};
 
 	return events[event];
-};
-
-const getComponentToRender = (state: AuthStates) => {
-	const componentToRender = {
-		login: SignIn,
-		signUp: SignUp,
-		oneTimePassword: OneTimePassword,
-		resetPassword: ResetPassword,
-	};
-
-	return componentToRender[state];
 };
 
 const LoginXState: NextPageWithLayout = () => {
