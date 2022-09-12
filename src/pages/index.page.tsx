@@ -3,6 +3,7 @@ import { ReactElement, useMemo, useState } from 'react';
 import { NextPageWithLayout } from '@/pages/_app.page';
 import Layout from '@/components/Layout';
 import { AuthStates, getComponentToRender } from '@/utils/getComponentToRender';
+import Head from 'next/head';
 
 const Home: NextPageWithLayout = () => {
 	const [currentState, setCurrentState] = useState<AuthStates>('login');
@@ -14,7 +15,14 @@ const Home: NextPageWithLayout = () => {
 		[currentState]
 	);
 
-	return <ComponentToRender onStateChange={handleChangeState} />;
+	return (
+		<>
+			<Head>
+				<title>with useState</title>
+			</Head>
+			<ComponentToRender onStateChange={handleChangeState} />
+		</>
+	);
 };
 
 Home.getLayout = function getLayout(page: ReactElement) {

@@ -5,6 +5,7 @@ import { NextPageWithLayout } from '@/pages/_app.page';
 import Layout from '@/components/Layout';
 import { authMachine } from '@/pages/withXState/machine';
 import { AuthStates, getComponentToRender } from '@/utils/getComponentToRender';
+import Head from 'next/head';
 
 const getMachineEvents = (event: AuthStates) => {
 	const events = {
@@ -33,7 +34,14 @@ const LoginXState: NextPageWithLayout = () => {
 		[currentState]
 	);
 
-	return <ComponentToRender onStateChange={handleChangeState} />;
+	return (
+		<>
+			<Head>
+				<title>with XState</title>
+			</Head>
+			<ComponentToRender onStateChange={handleChangeState} />
+		</>
+	);
 };
 
 LoginXState.getLayout = function getLayout(page: ReactElement) {
