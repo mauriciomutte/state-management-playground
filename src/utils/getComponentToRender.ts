@@ -12,6 +12,8 @@ type StateComponentsType = {
 
 export type AuthStates = keyof StateComponentsType;
 
+const RenderNothing = () => null;
+
 export const getComponentToRender = (state: AuthStates) => {
 	const componentToRender: StateComponentsType = {
 		login: SignIn,
