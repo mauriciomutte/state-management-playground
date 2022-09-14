@@ -3,6 +3,7 @@ import { createMachine } from 'xstate';
 export const authMachine = createMachine({
 	id: 'authMachine',
 	initial: 'login',
+	predictableActionArguments: true,
 	states: {
 		login: {
 			on: {
