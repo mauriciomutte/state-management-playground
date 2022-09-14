@@ -15,12 +15,17 @@ export type AuthStates = keyof StateComponentsType;
 const RenderNothing = () => null;
 
 export const getComponentToRender = (state: AuthStates) => {
-	const componentToRender: StateComponentsType = {
-		login: SignIn,
-		signUp: SignUp,
-		oneTimePassword: OneTimePassword,
-		resetPassword: ResetPassword,
-	};
-
-	return componentToRender[state];
+	switch (state) {
+		case 'login':
+			return SignIn;
+		case 'signUp':
+			return SignUp;
+		case 'oneTimePassword':
+			return OneTimePassword;
+		case 'resetPassword':
+			return ResetPassword;
+		default:
+			console.warn(`Unhandled State value`);
+			return RenderNothing;
+	}
 };
