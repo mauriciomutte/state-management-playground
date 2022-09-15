@@ -12,6 +12,7 @@ const eventsByState = {
 	signUp: 'SIGN_UP',
 	oneTimePassword: 'ONE_TIME_PASSWORD',
 	resetPassword: 'RESET_PASSWORD',
+	resetPasswordConfirm: 'RESET_PASSWORD_CONFIRM',
 };
 
 const LoginXState: NextPageWithLayout = () => {
