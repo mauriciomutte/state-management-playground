@@ -1,3 +1,7 @@
+type AlertProps = {
+	message: string;
+};
+
 const AlertIcon = () => (
 	<svg
 		aria-hidden="true"
@@ -14,7 +18,7 @@ const AlertIcon = () => (
 	</svg>
 );
 
-const Alert = () => {
+const Alert = ({ message }: AlertProps) => {
 	return (
 		<div
 			className="flex p-4 mb-4 bg-red-100 rounded-lg dark:bg-red-200"
@@ -23,7 +27,7 @@ const Alert = () => {
 			<AlertIcon />
 			<span className="sr-only">Info</span>
 			<div className="ml-3 text-sm font-medium text-red-700 dark:text-red-800">
-				Error meessage
+				{message}
 			</div>
 		</div>
 	);
