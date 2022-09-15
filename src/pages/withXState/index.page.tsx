@@ -6,6 +6,7 @@ import { NextPageWithLayout } from '@/pages/_app.page';
 import Layout from '@/components/Layout';
 import { authMachine } from '@/pages/withXState/machine';
 import { AuthStates, getComponentToRender } from '@/utils/getComponentToRender';
+import Alert from '@/components/Alert';
 
 const eventsByState = {
 	login: 'SIGN_IN',
@@ -18,6 +19,7 @@ const eventsByState = {
 const LoginXState: NextPageWithLayout = () => {
 	const [machineState, send] = useMachine(authMachine);
 
+	const errorMessage = machineState.context.error;
 	const currentState = machineState.value as AuthStates;
 
 	const handleChangeState = (state: AuthStates) => {
@@ -37,6 +39,7 @@ const LoginXState: NextPageWithLayout = () => {
 				<title>with XState</title>
 			</Head>
 			<ComponentToRender onStateChange={handleChangeState} />
+			{!!errorMessage && <Alert message={errorMessage} />}
 		</>
 	);
 };
