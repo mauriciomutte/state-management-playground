@@ -16,7 +16,13 @@ export const authMachine = createMachine({
 			on: { SIGN_IN: 'login' },
 		},
 		resetPassword: {
-			on: { SIGN_IN: 'login' },
+			on: {
+				SIGN_IN: 'login',
+				RESET_PASSWORD_CONFIRM: 'resetPasswordConfirm',
+			},
+		},
+		resetPasswordConfirm: {
+			on: { SIGN_IN: 'login', RESET_PASSWORD: 'resetPassword' },
 		},
 		oneTimePassword: {
 			on: { SIGN_IN: 'login' },
