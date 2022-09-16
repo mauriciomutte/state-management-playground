@@ -12,6 +12,10 @@ const examplesList = [
 		label: 'with XState',
 		link: '/withXState',
 	},
+	{
+		label: 'with Zustand',
+		link: '/withZustand',
+	},
 ];
 
 const Home: NextPageWithLayout = () => {
