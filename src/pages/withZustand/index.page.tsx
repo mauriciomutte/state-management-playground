@@ -5,9 +5,10 @@ import { NextPageWithLayout } from '@/pages/_app.page';
 import Layout from '@/components/Layout';
 import { AuthStates, getComponentToRender } from '@/utils/getComponentToRender';
 import { useAuthStore } from '@/pages/withZustand/stores/authStore';
+import Alert from '@/components/Alert';
 
 const LoginZustand: NextPageWithLayout = () => {
-	const { state, changeState } = useAuthStore();
+	const { state, errorMessage, changeState } = useAuthStore();
 
 	const handleChangeState = (state: AuthStates) => changeState(state);
 
@@ -19,6 +20,7 @@ const LoginZustand: NextPageWithLayout = () => {
 				<title>with Zustand</title>
 			</Head>
 			<ComponentToRender onStateChange={handleChangeState} />
+			{!!errorMessage && <Alert message={errorMessage} />}
 		</>
 	);
 };
