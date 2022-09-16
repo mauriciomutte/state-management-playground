@@ -12,6 +12,7 @@ type AuthStoreType = {
 export const useAuthStore = create<AuthStoreType>((set) => ({
 	state: 'login',
 	errorMessage: undefined,
-	changeState: (currentState) => set(() => ({ state: currentState })),
+	changeState: (currentState) =>
+		set(() => ({ state: currentState, errorMessage: undefined })),
 	setErrorMessage: (message) => set(() => ({ errorMessage: message })),
 }));
