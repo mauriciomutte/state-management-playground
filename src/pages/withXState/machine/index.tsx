@@ -14,6 +14,14 @@ export const authMachine = createMachine(
 					SIGN_UP: 'signUp',
 					RESET_PASSWORD: 'resetPassword',
 					ONE_TIME_PASSWORD: 'oneTimePassword',
+					AUTHENTICATING: 'authenticating',
+				},
+			},
+			authenticating: {
+				invoke: {
+					src: 'loginUserService',
+					onDone: { actions: 'onDone' },
+					onError: { target: 'login', actions: 'setErrorMessage' },
 				},
 			},
 			signUp: {
