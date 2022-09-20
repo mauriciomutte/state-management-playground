@@ -51,6 +51,7 @@ export const authMachine = createMachine(
 			clearError: assign(() => ({
 				error: '',
 			})),
+			onDone: () => console.log('done'),
 		},
 		services: {
 			loginUserService: async () => {
