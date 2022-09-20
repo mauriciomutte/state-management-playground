@@ -44,5 +44,14 @@ export const authMachine = createMachine(
 				error: '',
 			})),
 		},
+		services: {
+			loginUserService: async () => {
+				try {
+					console.log('doing login...');
+				} catch {
+					throw new Error('error');
+				}
+			},
+		},
 	}
 );
